@@ -3,6 +3,13 @@
 # 开启错误检测：如果任何命令返回非零状态（报错），脚本将立即停止执行
 set -e
 
+echo "===drone, walk的SC4重新生成"
+python test_prompt_vllm.py.py --mode drone
+python test_prompt_vllm.py.py --mode walk
+
+python test_lastframe_gen.py --mode drone
+python test_lastframe_gen.py --mode walk
+
 echo "=== 开始执行 build.py 任务 ==="
 
 # 1. Build: egovid
